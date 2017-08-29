@@ -8,7 +8,7 @@ function showProductCategory($post) {
 	$catsinClass = preg_grep("/product_cat/", get_post_class( '', $post->ID )); // extract the categories from class array
 	if( $catsinClass ) { // let's make sure the category is in the class array
 		$totalCats = count($catsinClass); $i=0; 
-		if( $totalCats == 1) {echo "<div class='proCats'>Category: ";} else {echo "<div class='proCats'>Categories: ";}
+                echo "<div class='proCats'>Categor";if( $totalCats == 1) {echo "y: ";} else {echo "ies: ";}
 		foreach($catsinClass as  $cats) { $i++;
 		  $catParts = explode('product_cat-', $cats); // extract category title
 		  $productCat = ucwords( preg_replace('/-/', ' ', $catParts[1]) ); // clean up and capitalize
@@ -18,4 +18,4 @@ function showProductCategory($post) {
 		} echo "</div>";
 	} else {echo '&nbsp;'; } // can't find category of product
 } 
-add_action( 'woocommerce_after_shop_loop_item_title', 'showProductCategory' ); // the first param can change I guess
+add_action( 'woocommerce_after_shop_loop_item_title', 'showProductCategory' ); // the first param can change
